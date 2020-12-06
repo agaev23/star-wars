@@ -12,3 +12,10 @@
         </mat-card-content>
     </div>
 </mat-card>
+<button *ngIf="hasMore"
+    mat-raised-button
+    [disabled]="isLoading"
+    (click)="loadMore()"
+    class="btn">
+    Load more
+</button>

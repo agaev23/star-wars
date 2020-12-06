@@ -1,4 +1,6 @@
 export interface Planets {
+    hasMore: boolean;
+    pageLoaded: number;
     results: Planet[];
 }
 

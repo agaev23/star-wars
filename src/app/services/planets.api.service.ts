@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { PlanetsDto } from '../models/planets.dto.model';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -16,6 +17,13 @@ export class PlanetsApiService {
     let params = new HttpParams();
     params = params.append('page', page.toString());
 
-    return this.http.get<PlanetsDto>(this.BASE_URL, {params});
+    return this.http.get<PlanetsDto>(this.BASE_URL, {params}).pipe(
+      catchError(() => of({
+        count: 0,
+        next: undefined,
+        previous: undefined,
+        results: [],
+      })),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Planet, Planets } from 'src/app/models/planets.model';
 import { PlanetsService } from 'src/app/services/planets.service';
 
@@ -10,12 +11,25 @@ import { PlanetsService } from 'src/app/services/planets.service';
 export class PlanetsPageComponent implements OnInit {
 
   planets: Planet[];
+  paginator$ = new BehaviorSubject<void>(null);
+  hasMore: boolean;
+  isLoading: boolean;
 
   constructor(
     private planetsService: PlanetsService,
   ) { }
 
   ngOnInit(): void {
-    this.planetsService.getPlanets$().subscribe((planets: Planets) => this.planets = planets.results);
+    this.planetsService.getPlanets$(this.paginator$)
+      .subscribe((planets: Planets) => {
+        this.planets = planets.results;
+        this.hasMore = planets.hasMore;
+        this.isLoading = false;
+      });
+  }
+
+  loadMore(): void {
+    this.isLoading = true;
+    this.paginator$.next();
   }
 }
