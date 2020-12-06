@@ -1,0 +1,24 @@
+@import "../../styles/variables";
+
+.card {
+    margin-top: $main-grid * 3;
+    padding: $main-grid * 10;
+    display: flex;
+    justify-content: space-between;
+}
+
+.img {
+    display: block;
+    width: $main-grid * 40;
+    height: $main-grid * 4 0;
+}
+
+.list {
+    &__item {
+        cursor: pointer;
+    }
+
+    &__icon {
+        margin-right: $main-grid;
+    }
+}

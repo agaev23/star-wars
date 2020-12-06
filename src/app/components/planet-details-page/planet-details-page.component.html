@@ -1,0 +1,28 @@
+<mat-card *ngIf="planet" class="card">
+    <div class="column">
+        <img class="img" src="https://www.flaticon.com/svg/static/icons/svg/1406/1406456.svg">
+    </div>
+    <div class="column">
+        <mat-card-title>{{planet.name}}</mat-card-title>
+        <mat-card-subtitle><b>rotation period: </b>{{planet.rotationPeriod}}</mat-card-subtitle>
+        <mat-card-subtitle><b>diameter: </b>{{planet.diameter}}</mat-card-subtitle>
+        <mat-card-subtitle><b>climate: </b>{{planet.climate}}</mat-card-subtitle>
+        <mat-card-subtitle><b>gravity: </b>{{planet.gravity}}</mat-card-subtitle>
+        <mat-card-subtitle><b>terrain: </b>{{planet.terrain}}</mat-card-subtitle>
+        <mat-card-content>
+            <ng-container *ngIf="planet.population; else populationUnknown">{{planet.population}} residents</ng-container>
+            <ng-template #populationUnknown>population unknown</ng-template>
+        </mat-card-content>
+    </div>
+    <div class="column list">
+        <ng-container *ngIf="planet.residents.length; else noResidents">
+            <mat-card-subtitle>residents:</mat-card-subtitle>
+            <mat-list-item *ngFor="let resident of planet.residents"
+                class="list__item">
+                <mat-icon mat-list-icon class="list__icon">face</mat-icon>
+                <div mat-line>{{resident.name}}</div>
+            </mat-list-item>
+        </ng-container>
+        <ng-template #noResidents>this planet has no residents yet =(</ng-template>
+    </div>
+</mat-card>

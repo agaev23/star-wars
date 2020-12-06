@@ -9,12 +9,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { PlanetDetailsPageComponent } from './components/planet-details-page/planet-details-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundPageComponent,
     PlanetsPageComponent,
+    PlanetDetailsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +27,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,
+    MatListModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

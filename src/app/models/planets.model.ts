@@ -8,4 +8,9 @@ export interface Planet {
     name: string;
     climate: string;
     population: number;
+    rotationPeriod: string;
+    diameter: string;
+    gravity: string;
+    terrain: string;
+    residents?: any[];
 }

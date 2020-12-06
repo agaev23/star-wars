@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { PlanetsDto } from '../models/planets.dto.model';
+import { PlanetDto, PlanetsDto } from '../models/planets.dto.model';
 import { catchError } from 'rxjs/operators';
 
 
@@ -25,5 +25,13 @@ export class PlanetsApiService {
         results: [],
       })),
     );
+  }
+
+  getById$(id: string): Observable<PlanetDto> {
+    return this.http.get<PlanetDto>(`${this.BASE_URL}${id}/`);
+  }
+
+  getResident$(url: string): Observable<any> {
+    return this.http.get<any>(url);
   }
 }
