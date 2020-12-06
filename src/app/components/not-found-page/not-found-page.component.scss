@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+
+:host {
+    text-align: center;
+}
+ 
+.status {
+    margin-top: $main-grid * 10;
+    font-size: 200px;
+    font-weight: 700;
+    color: $color-black-a15;
+}
+
+.message {
+    margin-bottom: $main-grid * 3;
+    text-transform: uppercase;
+    color: $color-black;
+    font-size: 32px;
+}
+
+.text {
+    max-width: $main-grid * 100;
+    margin: 0 auto;
+    color: rgba(34,34,34);
+    line-height: 28px;
+}
+
+.link {
+    color: $color-action;
+}

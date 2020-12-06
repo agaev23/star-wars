@@ -1,0 +1,14 @@
+<mat-card *ngFor="let planet of planets"
+    class="card">
+    <div class="column">
+        <img class="img" src="https://www.flaticon.com/svg/static/icons/svg/1406/1406456.svg">
+    </div>
+    <div class="column">
+        <mat-card-title>{{planet.name}}</mat-card-title>
+        <mat-card-subtitle>{{planet.climate}}</mat-card-subtitle>
+        <mat-card-content>
+            <ng-container *ngIf="planet.population; else populationUnknown">{{planet.population}} residents</ng-container>
+            <ng-template #populationUnknown>population unknown</ng-template>
+        </mat-card-content>
+    </div>
+</mat-card>

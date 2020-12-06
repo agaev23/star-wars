@@ -1,0 +1,16 @@
+@import "../../styles/variables";
+
+.card {
+    margin-top: $main-grid * 3;
+    display: flex;
+}
+
+.column {
+    margin-right: $main-grid * 5;
+}
+
+.img {
+    display: block;
+    width: $main-grid * 10;
+    height: $main-grid * 10;
+}
