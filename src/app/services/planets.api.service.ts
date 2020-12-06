@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { PlanetDto, PlanetsDto } from '../models/planets.dto.model';
 import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -11,7 +12,10 @@ import { catchError } from 'rxjs/operators';
 export class PlanetsApiService {
   private readonly BASE_URL = 'http://swapi.dev/api/planets/';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) { }
 
   getPlanets$(page: number = 1): Observable<PlanetsDto> {
     let params = new HttpParams();
@@ -28,10 +32,21 @@ export class PlanetsApiService {
   }
 
   getById$(id: string): Observable<PlanetDto> {
-    return this.http.get<PlanetDto>(`${this.BASE_URL}${id}/`);
+    return this.http.get<PlanetDto>(`${this.BASE_URL}${id}/`).pipe(
+      catchError((err) => {
+        if (err.status === 404) {
+          this.navigateToNotFound();
+        }
+        return of(undefined);
+      }),
+    );
   }
 
   getResident$(url: string): Observable<any> {
     return this.http.get<any>(url);
+  }
+
+  private navigateToNotFound(): void {
+    this.router.navigate(['not-found']);
   }
 }
