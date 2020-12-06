@@ -18,6 +18,7 @@
         <ng-container *ngIf="planet.residents.length; else noResidents">
             <mat-card-subtitle>residents:</mat-card-subtitle>
             <mat-list-item *ngFor="let resident of planet.residents"
+                (click)="onOpenResident(resident)"
                 class="list__item">
                 <mat-icon mat-list-icon class="list__icon">face</mat-icon>
                 <div mat-line>{{resident.name}}</div>

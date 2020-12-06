@@ -1,0 +1,23 @@
+@import "../../styles/variables";
+
+.info {
+    width: $main-grid * 40;
+    height: $main-grid * 40;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    width: 45%;
+}
+
+.img {
+    height: $main-grid * 30;
+}
+
+h3 {
+    margin-bottom: $main-grid * 3;
+}

@@ -93,6 +93,9 @@ export class PlanetsService {
   private adaptResident(resident: ResidentDto): Resident {
     return {
       name: resident.name,
+      height: resident.height,
+      mass: resident.mass,
+      gender: resident.gender,
     };
   }
 

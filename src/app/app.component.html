@@ -2,7 +2,7 @@
     <a [routerLink]="['/']">
         Star Wars
     </a>
-    <div class="page-info">Pages loaded: {{pagesLoaded}}</div>
+    <div *ngIf="pagesLoaded" class="page-info">Pages loaded: {{pagesLoaded}}</div>
 </mat-toolbar>
 <div class="wrapper">
     <router-outlet></router-outlet>
